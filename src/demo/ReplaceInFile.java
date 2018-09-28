@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ReplaceInFile {
 	
@@ -41,10 +43,12 @@ public class ReplaceInFile {
 		BufferedReader br = new BufferedReader(isr);
 		PrintWriter pw2 = new PrintWriter(f2);
 		StringBuffer sb1 = new StringBuffer();
+		Pattern p = Pattern.compile("http://218.89.64.78/ybimages/");
 		String str;
 		while((str = br.readLine()) != null) {
 //			sb1.append(str);
-			pw2.println(str);
+			Matcher m =p.matcher(str);
+			pw2.println(m.replaceAll("http://http://218.6.151.29:8888/"));
 			pw2.flush();			
 		}
 		System.out.println(sb1);
